@@ -5,7 +5,7 @@ import "./NoiseBatik.css";
 export default function NoiseBatik() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const blobURL = "blob:http://localhost:5173/" + id; 
+  const blobURL = `blob:${window.location.origin}/` + id; 
 
   const onError = () => navigate("/");
 

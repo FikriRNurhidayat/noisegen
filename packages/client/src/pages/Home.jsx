@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import Menu from "../components/Menu";
 import Loading from "../components/Loading";
 import { useNoises } from "../contexts/NoiseContext";
+import { NOISEGEN_API_URL } from "../config";
 import "./Home.css";
 
 function Home() {
@@ -16,7 +17,7 @@ function Home() {
   const navigate = useNavigate();
 
   const createNoise = async () => {
-    const response = await fetch("http://localhost:5178/noises:random");
+    const response = await fetch(`${NOISEGEN_API_URL}/noises:random`);
     if (!response.ok) return Promise.reject();
 
     return response;

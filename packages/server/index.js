@@ -1,9 +1,13 @@
 const express = require("express");
 const morgan = require("morgan");
+const path = require("path");
 const cors = require("cors");
 const perlin = require("perlin-noise");
 const { createCanvas } = require("canvas");
+
 const app = express();
+const staticDir = path.join(__dirname, '../client/dist');
+
 const {
   PORT = 5178,
   NOISE_WIDTH = 512,
@@ -13,6 +17,7 @@ const {
 
 app.use(cors());
 app.use(morgan("dev"));
+app.use(express.static(staticDir))
 
 app.get("/", async (req, res) => {
   res.status(200).end();
@@ -38,5 +43,9 @@ app.get("/noises\:random", async (req, res) => {
   res.setHeader('content-type', 'image/png');
   res.status(200).send(canvas.toBuffer('image/png'));
 });
+
+app.use((req, res, next) => {
+  res.redirect("/");
+})
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));

@@ -17,7 +17,7 @@ export default function NoiseGallery() {
   }
 
   const getBlobId = (blobUrl) => {
-    return blobUrl.split("blob:http://localhost:5173/")[1];
+    return blobUrl.split(`blob:${window.location.origin}/`)[1];
   }
 
   useEffect(() => {
