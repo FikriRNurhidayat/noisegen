@@ -1,0 +1,64 @@
+.Menu--title {
+  text-transform: uppercase;
+}
+
+.Menu--body {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
+
+.Menu--body input {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.Menu--input {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.Menu--input label {
+  text-transform: uppercase;
+}
+
+.Menu--input input {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: black;
+  font-size: 5rem;
+  color: white;
+  border: thick double white;
+  border-radius: 0.5rem;
+}
+
+.Menu--input input::-webkit-outer-spin-button,
+.Menu--input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Menu--input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.Menu--submit input[type="submit"] {
+  background: none;
+  padding: 1rem;
+  border: thick double black;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.Menu--submit input[type="submit"]:hover {
+  background: black;
+  color: white;
+}

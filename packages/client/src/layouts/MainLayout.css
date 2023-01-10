@@ -1,0 +1,16 @@
+.MainLayout {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  image-rendering: pixelated;
+}
+
+.MainLayout section {
+  max-width: 48rem;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
