@@ -1,8 +1,6 @@
 # Noisegen
 
-<video width="100%" controls>
-  <source src="demo.mp4" type="video/mp4">
-</video>
+![](./demo.mp4)
 
 Just a simple perlin noise visualier. This project is written using react and express.
 
