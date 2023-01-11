@@ -5,7 +5,7 @@ import "./NoiseBatik.css";
 export default function NoiseBatik() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const blobURL = `blob:${window.location.origin}/` + id; 
+  const blobURL = `blob:${window.location.origin}/` + id;
 
   const onError = () => navigate("/");
 
@@ -24,7 +24,12 @@ export default function NoiseBatik() {
           <Link to="/noises">Go to Noise Gallery</Link>
         </nav>
       </div>
-      <img src={blobURL} alt="Noise" onError={onError} className="NoiseBatik--image" />
+      <img
+        src={blobURL}
+        alt="Noise"
+        onError={onError}
+        className="NoiseBatik--image"
+      />
     </BlankLayout>
-  )
+  );
 }

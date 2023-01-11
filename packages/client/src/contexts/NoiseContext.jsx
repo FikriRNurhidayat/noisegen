@@ -8,11 +8,11 @@ export function useNoises() {
 }
 
 export function NoiseProvider({ children }) {
-  const [noises, setNoises] = useLocalStorage('noises', []);
+  const [noises, setNoises] = useLocalStorage("noises", []);
 
   return (
     <NoiseContext.Provider value={[noises, setNoises]}>
       {children}
     </NoiseContext.Provider>
-  )
+  );
 }

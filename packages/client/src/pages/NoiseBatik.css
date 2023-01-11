@@ -1,5 +1,5 @@
 .NoiseBatik {
-  background-size: 2rem;
+  background-size: 4rem;
   background-repeat: repeat;
   min-height: 100vh;
   width: 100%;
@@ -12,7 +12,7 @@
   padding: 4rem;
   background: white;
   border: thick double black;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   text-align: center;
   display: flex;
   flex-direction: column;

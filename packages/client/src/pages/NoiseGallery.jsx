@@ -9,20 +9,29 @@ import "./NoiseGallery.css";
 export default function NoiseGallery() {
   const navigate = useNavigate();
   const [noises, setNoises] = useNoises();
-  const { entries, page, pageCount, nextPage, previousPage, isNextPageDisabled, isPreviousPageDisabled, setEntries } = usePagination(noises);
+  const {
+    entries,
+    page,
+    pageCount,
+    nextPage,
+    previousPage,
+    isNextPageDisabled,
+    isPreviousPageDisabled,
+    setEntries,
+  } = usePagination(noises);
 
   const onNoiseError = async () => {
     await setNoises([]);
     await setEntries([]);
-  }
+  };
 
   const getBlobId = (blobUrl) => {
     return blobUrl.split(`blob:${window.location.origin}/`)[1];
-  }
+  };
 
   useEffect(() => {
     if (entries.length <= 0) navigate(window.location.pathname);
-  }, [entries])
+  }, [entries]);
 
   return (
     <MainLayout>
@@ -30,8 +39,8 @@ export default function NoiseGallery() {
         <div className="NoiseGallery--header">
           <h1 className="NoiseGallery--title">Noises</h1>
           <div className="NoiseGallery--subtitle">
-            Generated noises. We're using the perlin noise to generate this.
-            And it is meant to be pixelated for artistic purposes.
+            Generated noises. We're using the perlin noise to generate this. And
+            it is meant to be pixelated for artistic purposes.
           </div>
 
           <nav className="NoiseGallery--navigation">
@@ -43,20 +52,34 @@ export default function NoiseGallery() {
           <>
             <div className="NoiseGallery--body">
               {entries.map((noiseURL, index) => (
-                <Noise key={index} src={noiseURL} onError={onNoiseError} href={`/noises/${getBlobId(noiseURL)}`} />
+                <Noise
+                  key={index}
+                  src={noiseURL}
+                  onError={onNoiseError}
+                  href={`/noises/${getBlobId(noiseURL)}`}
+                />
               ))}
             </div>
 
             <nav className="NoiseGallery--pagination">
-              <button onClick={() => previousPage()} disabled={isPreviousPageDisabled}>Previous</button>
+              <button
+                onClick={() => previousPage()}
+                disabled={isPreviousPageDisabled}
+              >
+                Previous
+              </button>
 
-              <div>Page {page} of {pageCount}</div>
+              <div>
+                Page {page} of {pageCount}
+              </div>
 
-              <button onClick={() => nextPage()} disabled={isNextPageDisabled}>Next</button>
+              <button onClick={() => nextPage()} disabled={isNextPageDisabled}>
+                Next
+              </button>
             </nav>
           </>
         )}
       </div>
     </MainLayout>
-  )
+  );
 }

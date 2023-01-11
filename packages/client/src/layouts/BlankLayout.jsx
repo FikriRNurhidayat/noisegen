@@ -6,5 +6,5 @@ export default function BlankLayout({ children, className, style }) {
     <main className={computedClassName} style={style}>
       {children}
     </main>
-  )
+  );
 }

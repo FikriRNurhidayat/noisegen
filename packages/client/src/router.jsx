@@ -16,7 +16,6 @@ const router = createBrowserRouter([
     path: "/noises/:id",
     element: <NoiseBatik />,
   },
-])
+]);
 
 export default router;
-

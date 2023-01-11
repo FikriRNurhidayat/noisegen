@@ -24,13 +24,13 @@ function Home() {
   };
 
   const onNoiseCreated = async (response) => {
-    if ((finished % 100) !== 0) return;
-    
+    if (finished % 100 !== 0) return;
+
     const blob = await response.blob();
     const url = URL.createObjectURL(blob);
 
     return setNoises((noises) => [...noises, url]);
-  }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ function Home() {
 
     const requests = [];
 
-    for (let i = 0; i < form.total; i++) {
+    for (let i = 0; i < Number(form.total); i++) {
       const request = createNoise()
         .then(onNoiseCreated)
         .catch((err) => setFailed((e) => e + 1))
@@ -67,8 +67,8 @@ function Home() {
 
   return (
     <MainLayout>
-      {!isProcessing && (<Menu onSubmit={onSubmit} />)}
-      {isProcessing && (<Loading value={finished} max={process} />)}
+      {!isProcessing && <Menu onSubmit={onSubmit} />}
+      {isProcessing && <Loading value={finished} max={process} />}
     </MainLayout>
   );
 }
