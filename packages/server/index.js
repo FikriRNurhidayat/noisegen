@@ -24,10 +24,13 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/noises:random", async (req, res) => {
-  const cellWidth = Math.round(NOISE_WIDTH / CELL_SIZE);
-  const cellHeight = Math.round(NOISE_HEIGHT / CELL_SIZE);
+  const noiseHeight = Number(req.query.height) || NOISE_HEIGHT;
+  const noiseWidth = Number(req.query.width) || NOISE_WIDTH;
+  const cellSize = Number(req.query['cell_size']) || CELL_SIZE;
+  const cellWidth = Math.round(noiseWidth / cellSize);
+  const cellHeight = Math.round(noiseHeight / cellSize);
   const noises = perlin.generatePerlinNoise(cellWidth, cellHeight);
-  const canvas = createCanvas(NOISE_WIDTH, NOISE_HEIGHT);
+  const canvas = createCanvas(noiseWidth, noiseHeight);
   const ctx = canvas.getContext("2d");
 
   for (let y = 0; y < cellHeight; y++) {
@@ -36,7 +39,7 @@ app.get("/noises:random", async (req, res) => {
       const color = Math.round(255 * noise);
       const rgb = [color, color, color];
       ctx.fillStyle = `rgb(${rgb.join(",")})`;
-      ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+      ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
     }
   }
 
@@ -48,4 +51,4 @@ app.use((req, res, next) => {
   res.redirect("/");
 });
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Listening on port ${PORT}!`));
