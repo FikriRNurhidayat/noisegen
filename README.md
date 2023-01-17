@@ -1,6 +1,5 @@
 # Noisegen
 
-
 Just a simple perlin noise visualier. This project is written using react and express.
 
 ## Getting Started
